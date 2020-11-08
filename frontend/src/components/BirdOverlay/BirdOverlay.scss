@@ -1,0 +1,16 @@
+.bird-overlay {
+  width: 502px;
+  height: 502px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+
+  .bird-overlay-inerr {
+    width: 457px;
+    height: 457px;
+    background: #cdefa8;
+    img {
+      width: 599px;
+      height: 399px;
+    }
+  }
+}

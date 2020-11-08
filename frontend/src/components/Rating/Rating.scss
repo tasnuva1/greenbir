@@ -1,0 +1,27 @@
+.rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
+
+  .ratings-stars {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: 12px;
+    }
+  }
+  span {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 0px;
+    text-transform: lowercase;
+    letter-spacing: 0.2px;
+
+    color: #ffffff;
+    margin-left: 0.6rem;
+  }
+}

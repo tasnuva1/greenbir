@@ -1,0 +1,30 @@
+.shopmaincontent-btn {
+  display: flex;
+  width: 16%;
+  justify-content: space-between;
+}
+
+.shop-screen-container {
+  background: #40916c;
+
+  .shop-screen-inerr {
+    width: 90%;
+    margin: auto;
+
+    .production-whole-container {
+      .product-list {
+        width: 90%; // 92%
+        margin: auto;
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: space-around;
+        // flex-wrap: wrap;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 248px);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+      }
+    }
+  }
+}

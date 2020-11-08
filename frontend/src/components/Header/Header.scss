@@ -1,0 +1,124 @@
+.header-container {
+  height: 10vh;
+  // background-color: #36db8e;
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    // grid-template-areas: 'box1 box2' 'box1 box3';
+    //   background: linear-gradient(to right, blue 50%, yellow 50%);
+    border-bottom: 0.2px solid #fff;
+
+    .logo-name {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.9rem;
+        text-transform: capitalize;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .nav-links {
+      nav ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .active {
+          border-bottom: #fff solid 1px;
+        }
+
+        li {
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1.4rem;
+          line-height: 0rem;
+          margin-bottom: 2.5rem;
+          margin-top: 2.5rem;
+          text-transform: capitalize;
+          color: #fff;
+          // text-decoration: none;
+          list-style: none;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .header-side {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding-left: 10rem;
+
+      .search-container {
+        .searchicon {
+          width: 1.3rem;
+          position: absolute;
+          padding-top: 1rem;
+          padding-left: 1.5rem;
+        }
+
+        .cursor-visiblity {
+          display: none;
+        }
+
+        .cursoricon {
+          height: 1.5rem;
+          width: 1.9px;
+          position: absolute;
+          padding-top: 0.9rem;
+          padding-left: 3.6rem;
+        }
+
+        input {
+          border-right: none;
+          padding: 0.5rem;
+          font-size: 1.3rem;
+          padding-left: 3.5rem;
+          height: 2.2rem;
+          width: 12rem;
+          border-radius: 1rem 1rem 1rem 1rem;
+          outline: none;
+          border: none;
+        }
+      }
+
+      .card-container p,
+      .sign-container p {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 0rem;
+        text-transform: uppercase;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: space-between;
+        img {
+          width: 1.9rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      .sign-container {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+          margin-right: 0.5rem;
+          width: 1.7rem;
+        }
+      }
+    }
+  }
+}

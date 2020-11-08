@@ -1,0 +1,22 @@
+{
+  "name": "greenbir",
+  "version": "1.0.0",
+  "description": "MERN Stack -GreenBir bird shopping app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tasnuva1/greenbir.git"
+  },
+  "author": "Fahmida Mashura Tasnuva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tasnuva1/greenbir/issues"
+  },
+  "homepage": "https://github.com/tasnuva1/greenbir#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

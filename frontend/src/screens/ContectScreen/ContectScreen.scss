@@ -1,0 +1,16 @@
+.contect-screen-bg {
+  // background: linear-gradient(to right, url() 50%, url() 0%);
+  height: 100vh;
+
+  .contect-screen-bg-side {
+    background-size: 75%; // : widht height;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+
+  .contect-screen-container {
+    width: 90%;
+    margin: auto;
+    height: 100vh;
+  }
+}
