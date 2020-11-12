@@ -1,21 +1,5 @@
-interface projuctmodal {
-  _id: string;
-  name: string;
-  image: string;
-  innerImages: string[];
-  DetaileDescription?: string[];
-  description: string;
-  brand: string;
-  category: string;
-  price: number;
-  countInStock: number;
-  rating: number;
-  numReviews: number;
-}
-
-const products: projuctmodal[] = [
+const products = [
   {
-    _id: '1',
     name: 'Airpods Wireless Bluetooth Headphones, works with any type of phone',
     image: '/images/birds/Blue-Parakeets/1.svg',
     innerImages: [
@@ -38,7 +22,6 @@ const products: projuctmodal[] = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'iPhone 11 Pro 256GB Memory',
     image: '/images/birds/Cockatiel/1.svg',
     innerImages: [
@@ -61,7 +44,6 @@ const products: projuctmodal[] = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Cannon EOS 80D DSLR Camera',
     image: '/images/birds/Collared-Dove/1.svg',
     innerImages: [
@@ -82,7 +64,6 @@ const products: projuctmodal[] = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Sony Playstation 4 Pro White Version',
     image: '/images/birds/Green-Parakeets/1.svg',
     innerImages: [
@@ -106,7 +87,6 @@ const products: projuctmodal[] = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Logitech G-Series Gaming Mouse',
     image: '/images/birds/kingfisher/1.svg',
     innerImages: [
@@ -123,7 +103,6 @@ const products: projuctmodal[] = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Amazon Echo Dot 3rd Generation',
     image: '/images/birds/yellow-Parakeets/1.svg',
     innerImages: [
@@ -142,4 +121,4 @@ const products: projuctmodal[] = [
   },
 ];
 
-export default products;
+module.exports = products;

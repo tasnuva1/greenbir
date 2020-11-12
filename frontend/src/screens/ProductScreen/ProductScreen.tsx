@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductScreen.scss';
 
-import products from '../../products';
+// import products from '../../products';
 import Rating from '../../components/Rating/Rating';
 import Button1 from '../../components/Button1/Button1';
 import Header from '../../components/Header/Header';
 
 import ReactImageMagnify from 'react-image-magnify';
+
+import axios from 'axios';
+
 // import {
 //   GlassMagnifier,
 //   // MOUSE_ACTIVATION,
@@ -14,111 +17,135 @@ import ReactImageMagnify from 'react-image-magnify';
 // } from 'react-image-magnifiers';
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((product) => product._id === match.params.id);
+  interface productmodal {
+    _id: string;
+    name: string;
+    image: string;
+    innerImages: string[];
+    DetaileDescription?: string[];
+    description: string;
+    brand: string;
+    category: string;
+    price: number;
+    countInStock: number;
+    rating: number;
+    numReviews: number;
+  }
+  // let defaultProduct: productmodal;
 
-  // const [hover, sethover] = useState(false);
+  const [product, setProduct]: [
+    productmodal,
+    (product: productmodal) => void
+  ] = useState({});
+  const [loading, setLoading]: [boolean, (loading: boolean) => void] = useState<
+    boolean
+  >(true);
+  const [error, setError]: [string, (error: string) => void] = useState('');
 
-  // const [imageurl, setimageurl] = useState(product!.innerImages[0]);
+  useEffect(() => {
+    const fetchProduct = () => {
+      axios
+        .get<productmodal>(`/api/products/${match.params.id}`)
+        .then((response) => {
+          setProduct(response.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
+          setLoading(true);
+        });
+    };
+    fetchProduct();
+  }, [match.params.id]);
 
-  return (
-    <div className='product-screen-container'>
-      <div className='product-screen-inerr'>
-        <Header />
-        <div className='product-screen-top'>
-          <div className='praduct-screen-left-box'>
-            <Button1 className='product-screen-back'>go back</Button1>
-            {/* <img
-              src={product?.innerImages[0]}
-              alt='item'
-              className='product-screen-main-image1'
-            /> */}
-            {/* if(imageurl){' '}
-            {
-              <GlassMagnifier
-                imageSrc={imageurl}
-                imageAlt='Example'
-                largeImageSrc={imageurl}
-                allowOverflow={false} // Optional
-                magnifierBorderColor='#fff'
-                magnifierBackgroundColor='#40916c'
-                // magnifierBorderColor: '##40916c',
-                magnifierSize='35%'
-                className='product-screen-main-image'
-                style={{
-                  width: '100%',
-                  height: '40rem',
-                  borderRadius: '2rem',
-                  overflow: 'hidden',
-                  objectFit: 'cover',
-                }}
-              />
-            } */}
-            <div className='zoom-container'>
-              <ReactImageMagnify
-                {...{
-                  smallImage: {
-                    alt: 'Wristwatch by Ted Baker London',
-                    isFluidWidth: true,
-                    src: product?.innerImages[0]!,
-                    width: 637,
-                    height: 400,
-                    imageClassName: 'product-screen-main-image',
-                    style: {
-                      // width: '100%',
-                      // height: '40rem',
-                      borderRadius: '2rem',
-                      // overflow: 'hidden',
-                      // object-fit: contain;
-                      objectFit: 'cover',
-                      // margin-top: 2rem;
+  if (!loading) {
+    return (
+      <div className='product-screen-container'>
+        <div className='product-screen-inerr'>
+          <Header />
+          <div className='product-screen-top'>
+            <div className='praduct-screen-left-box'>
+              <Button1 className='product-screen-back'>go back</Button1>
+              <div className='zoom-container'>
+                <ReactImageMagnify
+                  {...{
+                    smallImage: {
+                      alt: 'Wristwatch by Ted Baker London',
+                      isFluidWidth: true,
+                      src: product.innerImages[0],
+                      width: 637,
+                      height: 400,
+                      imageClassName: 'product-screen-main-image',
+                      style: {
+                        borderRadius: '2rem',
+                        objectFit: 'cover',
+                      },
                     },
-                  },
-                  largeImage: {
-                    src: product?.innerImages[0]!,
-                    width: 1000,
-                    height: 1000,
-                  },
-                  // fadeDurationInMs: 0,
-                  // hoverOffDelayInMs: 0,
-                  // pressDuration: 0,
-                  enlargedImageContainerDimensions: {
-                    width: 600,
-                    height: 500,
-                  },
-                  // isHintEnabled: true,
-                  shouldUsePositiveSpaceLens: true,
-                }}
-              />
-            </div>
-            <div className='small-images-container'>
-              {product?.innerImages.map((img) => (
-                <img
-                  src={img}
-                  alt='item'
-                  // onMouseEnter={'fs'}
-                  // onMouseLeave={}
+                    largeImage: {
+                      src: product?.innerImages[0]!,
+                      width: 1000,
+                      height: 1000,
+                    },
+                    // fadeDurationInMs: 0,
+                    // hoverOffDelayInMs: 0,
+                    // pressDuration: 0,
+                    enlargedImageContainerDimensions: {
+                      width: 600,
+                      height: 500,
+                    },
+                    // isHintEnabled: true,
+                    shouldUsePositiveSpaceLens: true,
+                  }}
                 />
-              ))}
+              </div>
+              <div className='small-images-container'>
+                {product?.innerImages.map((img, index) => (
+                  <img
+                    src={img}
+                    alt='item'
+                    // onMouseEnter={'fs'}
+                    // onMouseLeave={}
+                    key={index}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-          <div className='product-screen-right-box'>
-            <h1>{product?.name}</h1>
-            <Rating
-              value={product?.rating}
-              text={`${product?.numReviews} reviews`}
-            />
-            <h3>{product?.price} TK</h3>
-            <p>{product?.description}</p>
+            <div className='product-screen-right-box'>
+              <h1>{product?.name}</h1>
+              <Rating
+                value={product?.rating}
+                text={`${product?.numReviews} reviews`}
+              />
+              <h3>{product?.price} TK</h3>
+              <p>{product?.description}</p>
 
-            <div className='status'>
-              <p>status:</p>
-              <p>{product!.countInStock! > 0 ? 'In Stock' : 'Out Of Stock'}</p>
+              <div className='status'>
+                <p>status:</p>
+                <p>
+                  {product!.countInStock! > 0 ? 'In Stock' : 'Out Of Stock'}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className=''>
+        <div>ProductScreen</div>
+        <h1>Lodding</h1>
+      </div>
+    );
+  }
 };
 
 export default ProductScreen;
+
+// import React from 'react';
+
+// const ProductScreen = () => {
+//   return <div>ProductScreen</div>;
+// };
+
+// export default ProductScreen;

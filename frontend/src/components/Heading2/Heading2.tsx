@@ -3,8 +3,8 @@ import './Heading2.scss';
 
 interface Heading2PropsTypes {
   children: string;
-  className: string;
-  customStyle: React.HTMLAttributes<HTMLHeadingElement>;
+  className?: string;
+  customStyle?: React.HTMLAttributes<HTMLHeadingElement>;
 }
 const Heading2 = ({ children, className, customStyle }: Heading2PropsTypes) => {
   return (
