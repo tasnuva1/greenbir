@@ -82,7 +82,7 @@ const ProductScreen = ({ match }) => {
                       },
                     },
                     largeImage: {
-                      src: product?.innerImages[0]!,
+                      src: product.innerImages[0],
                       width: 1000,
                       height: 1000,
                     },

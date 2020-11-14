@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const chalk = require('chalk');
+const colors = require('colors');
 const users = require('./data/users');
 const products = require('./data/products');
 const User = require('./models/userModel');
@@ -26,7 +26,7 @@ const importData = async () => {
       return { ...product, user: adminUser };
     });
     await Product.insertMany(sampleProducts);
-    console.log('Data Imported.........');
+    console.log('Data Imported.........'.bgBlue);
     process.exit();
   } catch (error) {
     console.error(`${error}`);
@@ -40,10 +40,10 @@ const destroyData = async () => {
     await Product.deleteMany({});
     await User.deleteMany({});
 
-    console.log(chalk.underline.bgBlue('Data Destroy.........'));
+    console.log('Data Destroy.........'.underline.red);
     process.exit();
   } catch (error) {
-    console.error(chalk.underline.bgRed(`${error}`));
+    console.error(`${error}`.underline.red);
     process.exit(1);
   }
 };
